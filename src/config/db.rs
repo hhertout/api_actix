@@ -30,5 +30,3 @@ impl Db {
         self.db.clone().unwrap()
     }
 }
-
-pub static mut DB: Db = Db::new();
