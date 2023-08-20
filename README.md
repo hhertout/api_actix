@@ -10,7 +10,7 @@ TODO
 
 ## Stack
 
-- Rocket
+- Actix
 - SeaORM
 
 ## Dev specs
