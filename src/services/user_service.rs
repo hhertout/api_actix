@@ -16,7 +16,6 @@ impl UserService {
     }
 
     pub async fn find_all(&self) -> Vec<entity::user::Model> {
-        println!("🚀 UserService::find_all");
         let result = User::find().all(unsafe { &DB.get_connection() }).await;
         match result {
             Ok(users) => users,

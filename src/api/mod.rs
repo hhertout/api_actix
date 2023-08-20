@@ -1,14 +1,9 @@
 pub mod user_api;
 
-use crate::services::user_service::UserService;
-use actix_web::{get, web, Responder, Result, HttpServer};
+use actix_web::{ Result, HttpServer};
 use actix_web::{middleware::Logger, App};
 
-#[get("/users")]
-async fn index() -> Result<impl Responder> {
-    let users = UserService::new().find_all().await;
-    Ok(web::Json(users))
-}
+use crate::api::user_api::*;
 
 pub async fn init() -> Result<(), std::io::Error> {
     let uri = dotenvy::var("SERVER_URI").unwrap_or_else(|_| "localhost".to_string());
@@ -20,7 +15,7 @@ pub async fn init() -> Result<(), std::io::Error> {
             .wrap(Logger::new(
                 "Request => %a \"%r\"; status => %s; time => %Dms",
             ))
-            .service(index)
+            .service(get_users)
     })
     .bind((uri.as_str(), port.as_str().parse().unwrap()))?
     .run()
