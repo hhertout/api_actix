@@ -16,6 +16,7 @@ pub async fn init() -> Result<(), std::io::Error> {
                 "Request => %a \"%r\"; status => %s; time => %Dms",
             ))
             .service(get_users)
+            .service(create_user)
     })
     .bind((uri.as_str(), port.as_str().parse().unwrap()))?
     .run()

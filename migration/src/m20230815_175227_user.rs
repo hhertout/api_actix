@@ -30,7 +30,7 @@ impl MigrationTrait for Migration {
                     )
                     .col(ColumnDef::new(User::Firstname).string().not_null())
                     .col(ColumnDef::new(User::Lastname).string().not_null())
-                    .col(ColumnDef::new(User::Email).string().not_null())
+                    .col(ColumnDef::new(User::Email).string().not_null().unique_key())
                     .col(ColumnDef::new(User::Password).string().not_null())
                     .to_owned(),
             )
