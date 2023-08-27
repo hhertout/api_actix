@@ -1,4 +1,4 @@
-# Rust API boilerplate
+# Rust API boilerplate & Sea ORM
 
 ## Getting Started
 
